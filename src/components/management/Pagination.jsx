@@ -1,0 +1,9 @@
+import React from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+export default function Pagination({ page, totalPages, totalItems, pageSize, setPage }) {
+  if (totalPages <= 1) return <div className="flex items-center justify-between border-t border-slate-100 px-5 py-3 text-xs text-slate-500 dark:border-zinc-800 dark:text-zinc-400"><span>Menampilkan {totalItems} data</span></div>;
+  const start = (page - 1) * pageSize + 1;
+  const end = Math.min(page * pageSize, totalItems);
+  return <div className="flex flex-col items-center justify-between gap-3 border-t border-slate-100 px-5 py-3 sm:flex-row dark:border-zinc-800"><span className="text-xs text-slate-500 dark:text-zinc-400">Menampilkan <b className="text-slate-700 dark:text-zinc-200">{start}-{end}</b> dari <b className="text-slate-700 dark:text-zinc-200">{totalItems}</b> data</span><div className="flex items-center gap-1"><button disabled={page === 1} onClick={() => setPage(page - 1)} className="rounded-lg border border-slate-200 p-1.5 text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:hover:bg-zinc-800"><ChevronLeft size={16} /></button>{Array.from({ length: totalPages }, (_, i) => i + 1).map(num => <button key={num} onClick={() => setPage(num)} className={`h-8 min-w-8 rounded-lg px-2 text-xs font-medium transition ${page === num ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100 dark:text-zinc-400 dark:hover:bg-zinc-800'}`}>{num}</button>)}<button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="rounded-lg border border-slate-200 p-1.5 text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:hover:bg-zinc-800"><ChevronRight size={16} /></button></div></div>;
+}

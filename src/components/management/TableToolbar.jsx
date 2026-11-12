@@ -1,0 +1,6 @@
+import React from 'react';
+import { Filter, Search, X } from 'lucide-react';
+
+export default function TableToolbar({ search, setSearch, filter, setFilter, options, placeholder }) {
+  return <div className="flex flex-col gap-3 border-b border-slate-100 p-4 sm:flex-row dark:border-zinc-800"><div className="relative flex-1"><Search size={17} className="absolute left-3 top-3 text-slate-400" /><input value={search} onChange={e => setSearch(e.target.value)} placeholder={placeholder} className="h-10 w-full rounded-lg border border-slate-200 bg-white pl-10 pr-9 text-sm outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100" />{search && <button onClick={() => setSearch('')} className="absolute right-3 top-3 text-slate-400"><X size={16} /></button>}</div><div className="relative sm:w-56"><Filter size={16} className="absolute left-3 top-3 text-slate-400" /><select value={filter} onChange={e => setFilter(e.target.value)} className="h-10 w-full appearance-none rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-600 outline-none transition focus:border-indigo-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">{options.map(option => <option key={option}>{option}</option>)}</select></div></div>;
+}

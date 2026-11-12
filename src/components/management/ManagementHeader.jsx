@@ -1,0 +1,7 @@
+import React from 'react';
+import { Download, Plus } from 'lucide-react';
+
+export default function ManagementHeader({ type, onAdd, onExport }) {
+  const employee = type === 'employees';
+  return <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="mb-1 text-sm text-slate-500 dark:text-zinc-400">Workspace / {employee ? 'Karyawan' : 'Inventaris'}</p><h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-zinc-100">{employee ? 'Manajemen Karyawan' : 'Manajemen Inventaris'}</h1><p className="mt-1 text-sm text-slate-500 dark:text-zinc-400">{employee ? 'Kelola informasi dan akses seluruh karyawan.' : 'Pantau dan kelola semua aset inventaris perusahaan.'}</p></div><div className="flex gap-2"><button onClick={onExport} className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"><Download size={16} /> <span className="hidden sm:inline">Export</span></button><button onClick={onAdd} className="flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-indigo-600/20 transition hover:bg-indigo-700"><Plus size={17} /> Tambah {employee ? 'Karyawan' : 'Barang'}</button></div></div>;
+}

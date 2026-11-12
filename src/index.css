@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { border-color: theme('colors.slate.200'); }
+  .dark * { border-color: theme('colors.zinc.800'); }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+.dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+.animate-modal { animation: fadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@layer components {
+  .label { @apply text-sm font-semibold text-slate-700 dark:text-zinc-300; }
+  .error { @apply block text-xs text-rose-500 mt-1; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-sm shadow-indigo-600/20 transition-colors disabled:opacity-50; }
+  .btn-secondary { @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 text-slate-600 dark:text-zinc-300 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors; }
+  .search-input { @apply w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm text-slate-800 dark:text-zinc-100 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500; }
+  .filter-select { @apply appearance-none w-full sm:w-auto pr-8 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm text-slate-600 dark:text-zinc-300 outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500; }
+  .table-head { @apply px-5 py-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500 whitespace-nowrap; }
+  .table-cell { @apply px-5 py-4 text-sm whitespace-nowrap; }
+  .action-btn { @apply p-2 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-colors; }
+  .mini-card { @apply bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 p-4 flex items-center gap-3; }
+  .mini-label { @apply text-[10px] text-slate-400; }
+  .mini-value { @apply text-lg font-bold text-slate-800 dark:text-zinc-100 mt-0.5; }
+}

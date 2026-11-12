@@ -1,0 +1,8 @@
+import React from 'react';
+
+export default function DistributionCard({ employees, inventory }) {
+  const departments = ['Engineering', 'Human Resources', 'Design', 'Marketing', 'Finance'];
+  const departmentColors = ['bg-indigo-500', 'bg-emerald-500', 'bg-amber-500', 'bg-blue-500', 'bg-rose-500'];
+  const total = employees.length || 1;
+  return <div className="rounded-xl border border-slate-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><div className="mb-5"><h3 className="font-semibold text-slate-900 dark:text-zinc-100">Distribusi Karyawan</h3><p className="mt-1 text-xs text-slate-500 dark:text-zinc-400">Berdasarkan departemen</p></div><div className="space-y-4">{departments.map((dept, index) => { const count = employees.filter(e => e.department === dept).length; const percent = Math.round((count / total) * 100); return <div key={dept}><div className="mb-1.5 flex justify-between text-xs"><span className="font-medium text-slate-600 dark:text-zinc-300">{dept}</span><span className="text-slate-400">{count} orang</span></div><div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-zinc-800"><div className={`h-full rounded-full ${departmentColors[index]}`} style={{ width: `${Math.max(percent, count ? 4 : 0)}%` }}></div></div></div>; })}</div><div className="mt-6 border-t border-slate-100 pt-4 dark:border-zinc-800"><div className="flex items-center justify-between text-xs"><span className="text-slate-500 dark:text-zinc-400">Total Inventaris</span><span className="font-bold text-slate-800 dark:text-zinc-200">{inventory.length} kategori barang</span></div></div></div>;
+}
